@@ -14,6 +14,6 @@ public class Bye extends Command
     @Override
     String help()
     {
-        return "Quit l'application";
+        return "Quit app";
     }
 }

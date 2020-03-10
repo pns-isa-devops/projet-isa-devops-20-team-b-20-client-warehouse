@@ -1,5 +1,6 @@
 package cli.framework;
 
+import api.DroneDeliveryAPI;
 import cli.commands.*;
 
 import java.util.ArrayList;
@@ -14,12 +15,25 @@ public class Shell
 
     private List<Command> commands;
 
+    private DroneDeliveryAPI droneDeliveryAPI;
+
+    public Shell(DroneDeliveryAPI droneDeliveryAPI)
+    {
+        this.droneDeliveryAPI = droneDeliveryAPI;
+    }
+
+    public DroneDeliveryAPI getDroneDeliveryAPI()
+    {
+        return droneDeliveryAPI;
+    }
+
     public List<Command> getCommands()
     {
         return commands;
     }
 
-    public void register(Class<? extends Command>... commandsClass) throws IllegalAccessException, InstantiationException
+    @SafeVarargs
+    public final void register(Class<? extends Command>... commandsClass) throws IllegalAccessException, InstantiationException
     {
         this.commands = new ArrayList<>();
         for (Class<? extends Command> command : commandsClass)
