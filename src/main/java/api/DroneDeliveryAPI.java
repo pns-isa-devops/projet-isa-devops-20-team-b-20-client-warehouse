@@ -1,7 +1,8 @@
 package api;
 
-import stubs.delivery.DeliveryService;
-import stubs.delivery.DeliveryServiceImplService;
+
+import stubs.DeliveryService;
+import stubs.DeliveryServiceImplService;
 
 import javax.xml.ws.BindingProvider;
 import java.net.URL;
@@ -16,9 +17,9 @@ public class DroneDeliveryAPI
 
     private void initDeliveries(String host, String port)
     {
-        URL wsdlLocation = DroneDeliveryAPI.class.getResource("/CartWS.wsdl");
+        URL wsdlLocation = DroneDeliveryAPI.class.getResource("/DeliveryWS.wsdl");
         DeliveryServiceImplService factory = new DeliveryServiceImplService(wsdlLocation);
-        this.deliveries = factory.getDeliveriesServiceImplPort();
+        this.deliveries = factory.getDeliveryServiceImplPort();
         String address = "http://" + host + ":" + port + "/dronedelivery-backend/webservices/DeliveryWS";
         ((BindingProvider) deliveries).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address);
     }
