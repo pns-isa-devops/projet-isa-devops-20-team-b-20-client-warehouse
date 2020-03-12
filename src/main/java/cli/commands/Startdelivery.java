@@ -12,7 +12,7 @@ public class Startdelivery extends Command
             return;
         }
         System.out.println(String.format("Starting drone : %s", args.get(0)));
-        //TODO lancer le drône
+        this.shell.getDroneDeliveryAPI().deliveries.startDelivery(args.get(0));
         System.out.println("Drone launched");
     }
 
