@@ -1,7 +1,7 @@
 package api;
 
-import stubs.DeliveryService;
-import stubs.DeliveryServiceImplService;
+import stubs.delivery.DeliveryService;
+import stubs.delivery.DeliveryServiceImplService;
 
 import javax.xml.ws.BindingProvider;
 import java.net.URL;
