@@ -1,5 +1,7 @@
 package cli.commands;
 
+import stubs.delivery.Exception_Exception;
+
 import java.util.List;
 
 public class Startdelivery extends Command
@@ -12,7 +14,11 @@ public class Startdelivery extends Command
             return;
         }
         System.out.println(String.format("Starting drone : %s", args.get(0)));
-        this.shell.getDroneDeliveryAPI().deliveries.startDelivery(args.get(0));
+        try {
+            this.shell.getDroneDeliveryAPI().deliveries.startDelivery(args.get(0));
+        } catch (Exception_Exception e) {
+            e.printStackTrace();
+        }
         System.out.println("Drone launched");
     }
 

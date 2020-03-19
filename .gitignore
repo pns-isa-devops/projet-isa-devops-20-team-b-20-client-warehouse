@@ -20,6 +20,6 @@ logs/*
 .project
 .**path
 .settings
-# Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
+# Avoid ignoring Maven wrapper api file (.api files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
 **/stubs
