@@ -5,7 +5,7 @@
     <groupId>fr.unice.polytech.isadevops.dronedelivery</groupId>
     <artifactId>projet-isa-devops-20-team-b-20-client-warehouse</artifactId>
     <packaging>jar</packaging>
-    <version>Release-0.1</version>
+    <version>1.0</version>
     <build>
         <plugins>
             <plugin>
