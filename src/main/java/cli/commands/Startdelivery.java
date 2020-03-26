@@ -3,6 +3,7 @@ package cli.commands;
 import stubs.delivery.Exception_Exception;
 
 import java.util.List;
+import api.DroneDeliveryAPI;
 
 public class Startdelivery extends Command
 {
@@ -15,7 +16,7 @@ public class Startdelivery extends Command
         }
         System.out.println(String.format("Starting drone : %s", args.get(0)));
         try {
-            this.shell.getDroneDeliveryAPI().deliveries.startDelivery(args.get(0));
+            ((DroneDeliveryAPI)this.shell.getDroneDeliveryAPI()).deliveries.startDelivery(args.get(0));
         } catch (Exception_Exception e) {
             e.printStackTrace();
         }
