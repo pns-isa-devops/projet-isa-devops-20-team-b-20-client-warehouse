@@ -6,25 +6,25 @@ import stubs.delivery.Exception_Exception;
 
 import java.util.List;
 
-public class Getnextdelivery extends Command {
+public class GetNextDelivery extends Command {
     @Override
     public void execute(List<String> args) {
         try {
-            Delivery delivery = ((DroneDeliveryAPI) this.shell.getDroneDeliveryAPI()).deliveries.getNextDelivery();
-            System.out.println("Prochaine livraison à préparer:"
-                    + "\nNuméro: " + delivery.getDeliveryNumber()
+            Delivery delivery = ((DroneDeliveryAPI) this.shell.getServiceAPI()).deliveryService.getNextDelivery();
+            System.out.println("Next delivery to prepare:"
+                    + "\nNumber: " + delivery.getDeliveryNumber()
                     + "\nDrone: " + delivery.getDrone().getDroneId()
-                    + "\nNuméro de colis: " + delivery.getParcel().getParcelNumber()
+                    + "\nParcel number: " + delivery.getParcel().getParcelNumber()
                     );
         } catch (Exception_Exception e) {
             e.printStackTrace();
         } catch (NullPointerException e) {
-            System.err.println("Delivery schedule is empty !");
+            System.err.println("Delivery schedule is empty!");
         }
     }
 
     @Override
     String help() {
-        return "See next delivery";
+        return "See next delivery.";
     }
 }

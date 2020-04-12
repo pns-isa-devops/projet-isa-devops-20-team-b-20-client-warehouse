@@ -6,21 +6,20 @@ import stubs.delivery.DeliveryServiceImplService;
 import javax.xml.ws.BindingProvider;
 import java.net.URL;
 
-public class DroneDeliveryAPI implements API
-{
+public class DroneDeliveryAPI extends ServiceAPI {
 
-    public DeliveryService deliveries;
+    public DeliveryService deliveryService; //TODO, Why is that public??
 
     public DroneDeliveryAPI(String host, String port) {
-        initDeliveries(host, port);
+        super(host, port);
     }
 
-    public void initDeliveries(String host, String port)
-    {
+    @Override
+    protected void initializeService(String host, String port) {
         URL wsdlLocation = DroneDeliveryAPI.class.getResource("/DeliveryWS.wsdl");
         DeliveryServiceImplService factory = new DeliveryServiceImplService(wsdlLocation);
-        this.deliveries = factory.getDeliveryServiceImplPort();
+        this.deliveryService = factory.getDeliveryServiceImplPort();
         String address = "http://" + host + ":" + port + "/drone-delivery-backend/webservices/DeliveryWS?wsdl";
-        ((BindingProvider) deliveries).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address);
+        ((BindingProvider) deliveryService).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address);
     }
 }

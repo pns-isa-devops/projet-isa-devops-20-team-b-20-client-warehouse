@@ -15,7 +15,7 @@ public class Main
         s.register(
                 Bye.class,
                 Help.class,
-                Startdelivery.class
+                StartDelivery.class
         );
         s.run();
     }
