@@ -15,7 +15,8 @@ public class Main
         s.register(
                 Bye.class,
                 Help.class,
-                Startdelivery.class
+                Startdelivery.class,
+                Chargedrone.class
         );
         s.run();
     }
