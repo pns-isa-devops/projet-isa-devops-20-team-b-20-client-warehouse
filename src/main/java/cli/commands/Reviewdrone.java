@@ -5,12 +5,13 @@ import stubs.maintenance.Exception_Exception;
 
 import java.util.List;
 
-public class Chargedrone extends Command {
+public class Reviewdrone extends Command {
+
     @Override
     public void execute(List<String> args) {
         try {
-            if(((DroneDeliveryAPI)this.shell.getDroneDeliveryAPI()).maintenanceService.chargeDrone(args.get(0))){
-                System.out.println("Drone "+args.get(0)+ " is in CHARGE mode");
+            if(((DroneDeliveryAPI)this.shell.getDroneDeliveryAPI()).maintenanceService.reviewDrone(args.get(0))){
+                System.out.println("Drone "+args.get(0)+ " is in REVIEW mode");
             }
             else{
                 System.out.println("Drone "+args.get(0)+ " doesn't exist");
@@ -22,6 +23,6 @@ public class Chargedrone extends Command {
 
     @Override
     String help() {
-        return "chargedrone <id_drone> : charge the drone.";
+        return "reviewdrone <drone_id> : Set the drone in review state";
     }
 }
