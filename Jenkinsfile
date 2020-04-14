@@ -3,7 +3,6 @@ pipeline{
     options {
         disableConcurrentBuilds()
         timeout(time: 1, unit: "HOURS")
-		skipDefaultCheckout()
     }
     environment {
         MVN_SETTING_PROVIDER = "3ec57b41-efe6-4628-a6c7-8be5f1c26d77"
