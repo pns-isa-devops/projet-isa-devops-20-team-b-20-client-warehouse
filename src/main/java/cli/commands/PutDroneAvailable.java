@@ -4,10 +4,10 @@ import api.DroneMaintenanceAPI;
 
 import java.util.List;
 
-public class Availabledrone extends Command {
+public class PutDroneAvailable extends Command {
     @Override
     public void execute(List<String> args) {
-        if (((DroneMaintenanceAPI) this.shell.getServiceAPI()).droneMaintenanceService.setAvailableDrone(args.get(0))) {
+        if (((DroneMaintenanceAPI) this.shell.getServiceAPI()).getDroneMaintenanceService().setAvailableDrone(args.get(0))) {
             System.out.println("Drone " + args.get(0) + " is AVAILABLE");
         } else {
             System.out.println("Drone " + args.get(0) + " doesn't exist");

@@ -8,13 +8,12 @@ import java.util.List;
 public class AddDrone extends Command {
     @Override
     public void execute(List<String> args) {
-        //((DroneMaintenanceAPI) this.shell.getServiceAPI()).deliveries.scheduleDelivery(args.get(0), args.get(1));
-        Drone drone; // = get
-        System.out.println("Adding drone to warehouse.");
+        ((DroneMaintenanceAPI) this.shell.getServiceAPI()).getDroneMaintenanceService().addDrone();
+        System.out.println("Drone added to warehouse.");
     }
 
     @Override
     String help() {
-        return "Adds a drone to the system.";
+        return "addDrone : Adds a drone to the system.";
     }
 }

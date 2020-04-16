@@ -2,12 +2,10 @@ import api.DroneDeliveryAPI;
 import cli.commands.*;
 import cli.framework.Shell;
 
-public class Main
-{
-    public static void main(String[] args) throws InstantiationException, IllegalAccessException
-    {
-        String host = ( args.length == 0 ? "localhost" : args[0] );
-        String port = ( args.length < 2  ? "8080"      : args[1] );
+public class Main {
+    public static void main(String[] args) throws InstantiationException, IllegalAccessException {
+        String host = (args.length == 0 ? "localhost" : args[0]);
+        String port = (args.length < 2 ? "8080" : args[1]);
         System.out.println("Starting Drone Delivery");
         System.out.println("  - Remote server: " + host);
         System.out.println("  - Port number:   " + port);
@@ -16,7 +14,10 @@ public class Main
                 Bye.class,
                 Help.class,
                 StartDelivery.class,
-                Chargedrone.class
+                PutDroneInCharge.class,
+                AddDrone.class,
+                PutDroneAvailable.class,
+                PutDroneInReview.class
         );
         s.run();
     }
