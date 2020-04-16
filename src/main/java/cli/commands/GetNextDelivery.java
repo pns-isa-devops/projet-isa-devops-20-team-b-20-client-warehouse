@@ -10,7 +10,7 @@ public class GetNextDelivery extends Command {
     @Override
     public void execute(List<String> args) {
         try {
-            Delivery delivery = ((DroneDeliveryAPI) this.shell.getServiceAPI()).deliveryService.getNextDelivery();
+            Delivery delivery = ((DroneDeliveryAPI) this.shell.getServiceAPI()).getDeliveryService().getNextDelivery();
             System.out.println("Next delivery to prepare:"
                     + "\nNumber: " + delivery.getDeliveryNumber()
                     + "\nDrone: " + delivery.getDrone().getDroneId()

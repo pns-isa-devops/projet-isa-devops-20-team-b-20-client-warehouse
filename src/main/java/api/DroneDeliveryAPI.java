@@ -8,10 +8,14 @@ import java.net.URL;
 
 public class DroneDeliveryAPI extends ServiceAPI {
 
-    public DeliveryService deliveryService; //TODO, Why is that public??
+    private DeliveryService deliveryService;
 
     public DroneDeliveryAPI(String host, String port) {
         super(host, port);
+    }
+
+    public DeliveryService getDeliveryService(){
+        return this.deliveryService;
     }
 
     @Override

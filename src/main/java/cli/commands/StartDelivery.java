@@ -16,7 +16,7 @@ public class StartDelivery extends Command
         }
         System.out.println(String.format("Starting drone : %s.", args.get(0)));
         try {
-            ((DroneDeliveryAPI)this.shell.getServiceAPI()).deliveryService.startDelivery(args.get(0));
+            ((DroneDeliveryAPI)this.shell.getServiceAPI()).getDeliveryService().startDelivery(args.get(0));
         } catch (Exception_Exception e) {
             e.printStackTrace();
         }
