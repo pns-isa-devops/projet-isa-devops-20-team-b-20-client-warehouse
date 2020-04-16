@@ -1,16 +1,17 @@
 package cli.commands;
 
-import api.DroneDeliveryAPI;
+import api.DeliveryAPI;
+import cli.framework.APIName;
 import stubs.delivery.Delivery;
 import stubs.delivery.Exception_Exception;
 
 import java.util.List;
 
-public class GetNextDelivery extends Command {
+public class Getnextdelivery extends Command {
     @Override
     public void execute(List<String> args) {
         try {
-            Delivery delivery = ((DroneDeliveryAPI) this.shell.getServiceAPI()).getDeliveryService().getNextDelivery();
+            Delivery delivery = ((DeliveryAPI) this.shell.getServiceAPI(APIName.DELIVERY)).getDeliveryService().getNextDelivery();
             System.out.println("Next delivery to prepare:"
                     + "\nNumber: " + delivery.getDeliveryNumber()
                     + "\nDrone: " + delivery.getDrone().getDroneId()

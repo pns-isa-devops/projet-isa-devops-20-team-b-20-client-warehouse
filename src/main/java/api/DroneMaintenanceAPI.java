@@ -1,5 +1,6 @@
 package api;
 
+import cli.framework.APIName;
 import stubs.maintenance.DroneMaintenanceService;
 import stubs.maintenance.DroneMaintenanceServiceImplService;
 
@@ -20,11 +21,16 @@ public class DroneMaintenanceAPI extends ServiceAPI {
 
     @Override
     protected void initializeService(String host, String port) {
-        URL wsdlLocation = DroneDeliveryAPI.class.getResource("/DroneMaintenanceWS.wsdl");
+        URL wsdlLocation = DeliveryAPI.class.getResource("/DroneMaintenanceWS.wsdl");
         DroneMaintenanceServiceImplService factory = new DroneMaintenanceServiceImplService(wsdlLocation);
         this.droneMaintenanceService = factory.getDroneMaintenanceServiceImplPort();
         String address = "http://" + host + ":" + port + "/drone-delivery-backend/webservices/DroneMaintenanceWS?wsdl";
         ((BindingProvider) droneMaintenanceService).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address);
+    }
+
+    @Override
+    public APIName getAPIName() {
+        return APIName.DRONE_MAINTENANCE;
     }
 
 }

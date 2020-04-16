@@ -1,11 +1,12 @@
 package cli.commands;
 
+import cli.framework.APIName;
 import stubs.delivery.Exception_Exception;
 
 import java.util.List;
-import api.DroneDeliveryAPI;
+import api.DeliveryAPI;
 
-public class StartDelivery extends Command
+public class Startdelivery extends Command
 {
     @Override
     public void execute(List<String> args)
@@ -16,7 +17,7 @@ public class StartDelivery extends Command
         }
         System.out.println(String.format("Starting drone : %s.", args.get(0)));
         try {
-            ((DroneDeliveryAPI)this.shell.getServiceAPI()).getDeliveryService().startDelivery(args.get(0));
+            ((DeliveryAPI)this.shell.getServiceAPI(APIName.DELIVERY)).getDeliveryService().startDelivery(args.get(0));
         } catch (Exception_Exception e) {
             e.printStackTrace();
         }

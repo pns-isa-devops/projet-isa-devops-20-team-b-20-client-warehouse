@@ -1,4 +1,5 @@
-import api.DroneDeliveryAPI;
+import api.DeliveryAPI;
+import api.DroneMaintenanceAPI;
 import cli.commands.*;
 import cli.framework.Shell;
 
@@ -9,15 +10,16 @@ public class Main {
         System.out.println("Starting Drone Delivery");
         System.out.println("  - Remote server: " + host);
         System.out.println("  - Port number:   " + port);
-        Shell s = new Shell(new DroneDeliveryAPI(host, port));
+        Shell s = new Shell(new DeliveryAPI(host, port), new DroneMaintenanceAPI(host, port));
         s.register(
                 Bye.class,
                 Help.class,
-                StartDelivery.class,
-                PutDroneInCharge.class,
-                AddDrone.class,
-                PutDroneAvailable.class,
-                PutDroneInReview.class
+                Getnextdelivery.class,
+                Startdelivery.class,
+                Setincharge.class,
+                Adddrone.class,
+                Setavailable.class,
+                Setinreview.class
         );
         s.run();
     }
