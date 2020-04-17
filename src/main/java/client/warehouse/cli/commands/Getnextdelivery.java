@@ -1,10 +1,11 @@
-package cli.commands;
-
-import framework.ShellWarehouse;
-import stubs.delivery.Delivery;
-import stubs.delivery.Exception_Exception;
+package client.warehouse.cli.commands;
 
 import java.util.List;
+
+import client.utils.cli.commands.Command;
+import client.warehouse.framework.ShellWarehouse;
+import stubs.delivery.Delivery;
+import stubs.delivery.Exception_Exception;
 
 public class Getnextdelivery extends Command {
     @Override
@@ -23,7 +24,7 @@ public class Getnextdelivery extends Command {
     }
 
     @Override
-    String help() {
+    protected String help() {
         return "See next delivery.";
     }
 }

@@ -1,15 +1,17 @@
-package cli.commands;
-
-import framework.ShellWarehouse;
-import stubs.maintenance.DroneNotFoundException_Exception;
+package client.warehouse.cli.commands;
 
 import java.util.List;
+
+import client.utils.cli.commands.Command;
+import client.warehouse.framework.ShellWarehouse;
+import stubs.maintenance.DroneNotFoundException_Exception;
 
 public class Setavailable extends Command {
     @Override
     public void execute(List<String> args) {
         try {
-            ((ShellWarehouse) this.shell).getDroneMaintenanceApi().getDroneMaintenanceService().setAvailableDrone(args.get(0));
+            ((ShellWarehouse) this.shell).getDroneMaintenanceApi().getDroneMaintenanceService()
+                    .setAvailableDrone(args.get(0));
             System.out.println("Drone " + args.get(0) + " is AVAILABLE");
 
         } catch (DroneNotFoundException_Exception e) {
@@ -18,7 +20,7 @@ public class Setavailable extends Command {
     }
 
     @Override
-    String help() {
+    protected String help() {
         return "availabledrone <drone_id> : Make the drone available";
     }
 }

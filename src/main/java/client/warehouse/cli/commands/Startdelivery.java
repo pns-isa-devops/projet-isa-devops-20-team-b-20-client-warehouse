@@ -1,16 +1,15 @@
-package cli.commands;
-
-import stubs.delivery.Exception_Exception;
+package client.warehouse.cli.commands;
 
 import java.util.List;
-import framework.ShellWarehouse;
 
-public class Startdelivery extends Command
-{
+import client.utils.cli.commands.Command;
+import client.warehouse.framework.ShellWarehouse;
+import stubs.delivery.Exception_Exception;
+
+public class Startdelivery extends Command {
     @Override
-    public void execute(List<String> args)
-    {
-        if(args.isEmpty()) {
+    public void execute(List<String> args) {
+        if (args.isEmpty()) {
             System.err.println("No drone selected.");
             return;
         }
@@ -24,8 +23,7 @@ public class Startdelivery extends Command
     }
 
     @Override
-    String help()
-    {
+    protected String help() {
         return "Launches the drone.";
     }
 }

@@ -1,9 +1,12 @@
-package api;
+package client.warehouse.api;
 
 import stubs.delivery.DeliveryService;
 import stubs.delivery.DeliveryServiceImplService;
 
 import javax.xml.ws.BindingProvider;
+
+import client.utils.api.ServiceAPI;
+
 import java.net.URL;
 
 public class DeliveryAPI extends ServiceAPI {
@@ -14,10 +17,9 @@ public class DeliveryAPI extends ServiceAPI {
         super(host, port);
     }
 
-    public DeliveryService getDeliveryService(){
+    public DeliveryService getDeliveryService() {
         return this.deliveryService;
     }
-
 
     @Override
     protected void initializeService(String host, String port) {

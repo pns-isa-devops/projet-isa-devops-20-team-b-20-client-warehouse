@@ -1,8 +1,9 @@
-package cli.commands;
+package client.warehouse.cli.commands;
 
 import java.util.List;
 
-import framework.ShellWarehouse;
+import client.utils.cli.commands.Command;
+import client.warehouse.framework.ShellWarehouse;
 
 public class Getparcels extends Command {
 
@@ -13,8 +14,8 @@ public class Getparcels extends Command {
     }
 
     @Override
-    String help() {
+    protected String help() {
         return "Get new parcels from carrier api";
     }
-    
+
 }

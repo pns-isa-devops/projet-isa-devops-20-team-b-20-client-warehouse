@@ -1,9 +1,12 @@
-package api;
+package client.warehouse.api;
 
 import stubs.maintenance.DroneMaintenanceService;
 import stubs.maintenance.DroneMaintenanceServiceImplService;
 
 import javax.xml.ws.BindingProvider;
+
+import client.utils.api.ServiceAPI;
+
 import java.net.URL;
 
 public class DroneMaintenanceAPI extends ServiceAPI {
@@ -24,7 +27,8 @@ public class DroneMaintenanceAPI extends ServiceAPI {
         DroneMaintenanceServiceImplService factory = new DroneMaintenanceServiceImplService(wsdlLocation);
         this.droneMaintenanceService = factory.getDroneMaintenanceServiceImplPort();
         String address = "http://" + host + ":" + port + "/drone-delivery-backend/webservices/DroneMaintenanceWS?wsdl";
-        ((BindingProvider) droneMaintenanceService).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address);
+        ((BindingProvider) droneMaintenanceService).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
+                address);
     }
 
 }
