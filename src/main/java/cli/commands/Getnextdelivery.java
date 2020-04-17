@@ -1,7 +1,6 @@
 package cli.commands;
 
-import api.DeliveryAPI;
-import cli.framework.APIName;
+import framework.ShellWarehouse;
 import stubs.delivery.Delivery;
 
 import java.util.List;
@@ -10,7 +9,7 @@ public class Getnextdelivery extends Command {
     @Override
     public void execute(List<String> args) {
         try {
-            Delivery delivery = ((DeliveryAPI) this.shell.getServiceAPI(APIName.DELIVERY)).getDeliveryService().getNextDelivery();
+            Delivery delivery = ((ShellWarehouse) this.shell).getDeliveryServiceAPI().getDeliveryService().getNextDelivery();
             System.out.println("Next delivery to prepare:"
                     + "\nNumber: " + delivery.getDeliveryId()
                     + "\nDrone: " + delivery.getDrone().getDroneId()

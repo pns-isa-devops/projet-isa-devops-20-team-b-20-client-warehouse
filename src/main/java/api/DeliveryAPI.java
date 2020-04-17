@@ -1,6 +1,5 @@
 package api;
 
-import cli.framework.APIName;
 import stubs.delivery.DeliveryService;
 import stubs.delivery.DeliveryServiceImplService;
 
@@ -27,10 +26,5 @@ public class DeliveryAPI extends ServiceAPI {
         this.deliveryService = factory.getDeliveryServiceImplPort();
         String address = "http://" + host + ":" + port + "/drone-delivery-backend/webservices/DeliveryWS?wsdl";
         ((BindingProvider) deliveryService).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address);
-    }
-
-    @Override
-    public APIName getAPIName() {
-        return APIName.DELIVERY;
     }
 }

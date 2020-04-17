@@ -1,15 +1,13 @@
 package cli.commands;
 
-import api.DroneMaintenanceAPI;
-import cli.framework.APIName;
-import stubs.delivery.Drone;
-
+import framework.ShellWarehouse;
 import java.util.List;
 
 public class Adddrone extends Command {
     @Override
     public void execute(List<String> args) {
-        ((DroneMaintenanceAPI) this.shell.getServiceAPI(APIName.DRONE_MAINTENANCE)).getDroneMaintenanceService().addDrone();
+        
+        ((ShellWarehouse) this.shell).getDroneMaintenanceApi().getDroneMaintenanceService().addDrone();
         System.out.println("Drone added to warehouse.");
     }
 

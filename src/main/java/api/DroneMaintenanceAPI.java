@@ -1,6 +1,5 @@
 package api;
 
-import cli.framework.APIName;
 import stubs.maintenance.DroneMaintenanceService;
 import stubs.maintenance.DroneMaintenanceServiceImplService;
 
@@ -26,11 +25,6 @@ public class DroneMaintenanceAPI extends ServiceAPI {
         this.droneMaintenanceService = factory.getDroneMaintenanceServiceImplPort();
         String address = "http://" + host + ":" + port + "/drone-delivery-backend/webservices/DroneMaintenanceWS?wsdl";
         ((BindingProvider) droneMaintenanceService).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address);
-    }
-
-    @Override
-    public APIName getAPIName() {
-        return APIName.DRONE_MAINTENANCE;
     }
 
 }

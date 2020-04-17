@@ -1,7 +1,7 @@
 import api.DeliveryAPI;
 import api.DroneMaintenanceAPI;
 import cli.commands.*;
-import cli.framework.Shell;
+import framework.ShellWarehouse;
 
 public class Main {
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
@@ -10,7 +10,7 @@ public class Main {
         System.out.println("Starting Drone Delivery");
         System.out.println("  - Remote server: " + host);
         System.out.println("  - Port number:   " + port);
-        Shell s = new Shell(new DeliveryAPI(host, port), new DroneMaintenanceAPI(host, port));
+        ShellWarehouse s = new ShellWarehouse(new DeliveryAPI(host, port), new DroneMaintenanceAPI(host, port));
         s.register(
                 Bye.class,
                 Help.class,

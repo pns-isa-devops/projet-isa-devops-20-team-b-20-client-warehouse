@@ -1,10 +1,9 @@
 package cli.commands;
 
-import cli.framework.APIName;
 import stubs.delivery.Exception_Exception;
 
 import java.util.List;
-import api.DeliveryAPI;
+import framework.ShellWarehouse;
 
 public class Startdelivery extends Command
 {
@@ -17,7 +16,7 @@ public class Startdelivery extends Command
         }
         System.out.println(String.format("Starting drone : %s.", args.get(0)));
         try {
-            ((DeliveryAPI)this.shell.getServiceAPI(APIName.DELIVERY)).getDeliveryService().startDelivery(args.get(0));
+            ((ShellWarehouse) this.shell).getDeliveryServiceAPI().getDeliveryService().startDelivery(args.get(0));
         } catch (Exception_Exception e) {
             e.printStackTrace();
         }
