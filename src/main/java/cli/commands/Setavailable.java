@@ -1,16 +1,19 @@
 package cli.commands;
 
 import framework.ShellWarehouse;
+import stubs.maintenance.DroneNotFoundException_Exception;
 
 import java.util.List;
 
 public class Setavailable extends Command {
     @Override
     public void execute(List<String> args) {
-        if (((ShellWarehouse) this.shell).getDroneMaintenanceApi().getDroneMaintenanceService().setAvailableDrone(args.get(0))) {
+        try {
+            ((ShellWarehouse) this.shell).getDroneMaintenanceApi().getDroneMaintenanceService().setAvailableDrone(args.get(0));
             System.out.println("Drone " + args.get(0) + " is AVAILABLE");
-        } else {
-            System.out.println("Drone " + args.get(0) + " doesn't exist");
+
+        } catch (DroneNotFoundException_Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
