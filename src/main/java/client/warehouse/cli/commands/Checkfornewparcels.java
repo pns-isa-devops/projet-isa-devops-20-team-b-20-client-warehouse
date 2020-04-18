@@ -5,7 +5,7 @@ import java.util.List;
 import client.warehouse.framework.ShellWarehouse;
 import stubs.delivery.Delivery;
 
-public class Getparcels extends Command {
+public class Checkfornewparcels extends Command {
 
     @Override
     public void execute(List<String> args) {

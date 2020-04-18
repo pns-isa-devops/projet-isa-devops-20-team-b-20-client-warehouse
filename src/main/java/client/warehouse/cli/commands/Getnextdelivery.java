@@ -5,7 +5,6 @@ import java.util.List;
 import client.utils.cli.commands.Command;
 import client.warehouse.framework.ShellWarehouse;
 import stubs.delivery.Delivery;
-import stubs.delivery.Exception_Exception;
 
 public class Getnextdelivery extends Command {
     @Override
@@ -17,9 +16,6 @@ public class Getnextdelivery extends Command {
                     + delivery.getDrone().getDroneId() + "\nParcel number: " + delivery.getParcel().getParcelId());
         } catch (NullPointerException e) {
             System.err.println("Delivery schedule is empty!");
-        } catch (Exception_Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         }
     }
 
