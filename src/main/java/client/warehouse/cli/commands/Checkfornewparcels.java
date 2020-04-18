@@ -2,6 +2,7 @@ package client.warehouse.cli.commands;
 
 import java.util.List;
 
+import client.utils.cli.commands.Command;
 import client.warehouse.framework.ShellWarehouse;
 import stubs.delivery.Delivery;
 
@@ -9,9 +10,9 @@ public class Checkfornewparcels extends Command {
 
     @Override
     public void execute(List<String> args) {
-        List<Delivery> deliveries = ((ShellWarehouse) this.shell).getDeliveryServiceAPI().getDeliveryService().checkForNewParcels();
-        for (Delivery delivery : deliveries)
-        {
+        List<Delivery> deliveries = ((ShellWarehouse) this.shell).getDeliveryServiceAPI().getDeliveryService()
+                .checkForNewParcels();
+        for (Delivery delivery : deliveries) {
             System.out.println(delivery.toString());
         }
         System.out.println("Parcels updated");
