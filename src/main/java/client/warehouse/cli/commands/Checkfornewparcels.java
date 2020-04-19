@@ -12,10 +12,15 @@ public class Checkfornewparcels extends Command {
     public void execute(List<String> args) {
         List<Delivery> deliveries = ((ShellWarehouse) this.shell).getDeliveryServiceAPI().getDeliveryService()
                 .checkForNewParcels();
-        for (Delivery delivery : deliveries) {
-            System.out.println(delivery.toString());
+
+        if (deliveries.isEmpty()) {
+            System.out.println("Nothing to update");
+        } else {
+            for (Delivery delivery : deliveries) {
+                System.out.println(delivery.getDeliveryId());
+            }
+            System.out.println("Parcels updated");
         }
-        System.out.println("Parcels updated");
     }
 
     @Override

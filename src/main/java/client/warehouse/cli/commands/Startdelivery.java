@@ -17,7 +17,7 @@ public class Startdelivery extends Command {
         try {
             ((ShellWarehouse) this.shell).getDeliveryServiceAPI().getDeliveryService().startDelivery(args.get(0));
         } catch (Exception_Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         System.out.println("Drone launched!");
     }
