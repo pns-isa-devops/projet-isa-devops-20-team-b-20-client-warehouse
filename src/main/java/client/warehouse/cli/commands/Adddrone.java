@@ -4,12 +4,17 @@ import java.util.List;
 
 import client.utils.cli.commands.Command;
 import client.warehouse.framework.ShellWarehouse;
+import stubs.maintenance.InvalidDroneIDException_Exception;
 
 public class Adddrone extends Command {
     @Override
     public void execute(List<String> args) {
 
-        ((ShellWarehouse) this.shell).getDroneMaintenanceApi().getDroneMaintenanceService().addDrone();
+        try {
+            ((ShellWarehouse) this.shell).getDroneMaintenanceApi().getDroneMaintenanceService().addDrone(args.get(0));
+        } catch (InvalidDroneIDException_Exception e) {
+            e.printStackTrace();
+        }
         System.out.println("Drone added to warehouse.");
     }
 
