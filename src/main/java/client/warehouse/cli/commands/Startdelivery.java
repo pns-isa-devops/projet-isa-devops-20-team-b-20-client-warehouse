@@ -13,13 +13,13 @@ public class Startdelivery extends Command {
             System.err.println("No drone selected.");
             return;
         }
-        System.out.println(String.format("Starting drone : %s.", args.get(0)));
         try {
+            System.out.println(String.format("Starting drone : %s.", args.get(0)));
             ((ShellWarehouse) this.shell).getDeliveryServiceAPI().getDeliveryService().startDelivery(args.get(0));
+            System.out.println("Drone launched!");
         } catch (Exception_Exception e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("Drone launched!");
     }
 
     @Override

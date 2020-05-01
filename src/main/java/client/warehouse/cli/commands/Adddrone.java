@@ -12,10 +12,10 @@ public class Adddrone extends Command {
 
         try {
             ((ShellWarehouse) this.shell).getDroneMaintenanceApi().getDroneMaintenanceService().addDrone(args.get(0));
+            System.out.println("Drone added to warehouse.");
         } catch (InvalidDroneIDException_Exception e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("Drone added to warehouse.");
     }
 
     @Override
