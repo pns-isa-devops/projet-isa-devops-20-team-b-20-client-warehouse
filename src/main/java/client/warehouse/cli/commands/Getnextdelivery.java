@@ -14,7 +14,7 @@ public class Getnextdelivery extends Command {
                     .getNextDelivery();
             System.out.println("Next delivery to prepare:" + "\nNumber: " + delivery.getDeliveryId() + "\nDrone: "
                     + delivery.getDrone().getDroneId() + "\nParcel number: " + delivery.getParcel().getParcelId());
-        } catch (NullPointerException e) {
+        } catch (Exception e) {
             System.err.println("Delivery schedule is empty!");
         }
     }

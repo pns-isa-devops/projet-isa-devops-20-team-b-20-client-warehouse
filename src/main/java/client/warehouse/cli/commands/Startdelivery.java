@@ -4,7 +4,6 @@ import java.util.List;
 
 import client.utils.cli.commands.Command;
 import client.warehouse.framework.ShellWarehouse;
-import stubs.delivery.Exception_Exception;
 
 public class Startdelivery extends Command {
     @Override
@@ -17,7 +16,7 @@ public class Startdelivery extends Command {
             System.out.println(String.format("Starting drone : %s.", args.get(0)));
             ((ShellWarehouse) this.shell).getDeliveryServiceAPI().getDeliveryService().startDelivery(args.get(0));
             System.out.println("Drone launched!");
-        } catch (Exception_Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
