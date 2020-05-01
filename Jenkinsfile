@@ -11,14 +11,13 @@ pipeline{
         stage("Compile") {
             steps {
                 configFileProvider([configFile(fileId: MVN_SETTING_PROVIDER, variable: "MAVEN_SETTINGS")]) {
-
                     echo "Compile module"
                     sh "mvn -s $MAVEN_SETTINGS clean compile"
-
                 }
             }
         }
         stage("Deploy") {
+            when { expression { BRANCH_NAME ==~ /(master|develop)/ }}
             steps {
                 configFileProvider([configFile(fileId: MVN_SETTING_PROVIDER, variable: "MAVEN_SETTINGS")]) {
                     echo "Deploy module"
