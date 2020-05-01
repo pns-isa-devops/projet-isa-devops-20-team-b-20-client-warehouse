@@ -29,6 +29,7 @@
           <xs:element minOccurs="0" name="currentDelivery" type="tns:delivery" />
           <xs:element minOccurs="0" name="droneId" type="xs:string" />
           <xs:element minOccurs="0" name="droneStatus" type="tns:droneStatus" />
+          <xs:element name="flightTime" type="xs:int" />
           <xs:element maxOccurs="unbounded" minOccurs="0" name="timeSlots" nillable="true" type="tns:timeSlot" />
         </xs:sequence>
       </xs:complexType>

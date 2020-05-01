@@ -13,7 +13,7 @@ public class Adddrone extends Command {
         try {
             ((ShellWarehouse) this.shell).getDroneMaintenanceApi().getDroneMaintenanceService().addDrone(args.get(0));
         } catch (InvalidDroneIDException_Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         System.out.println("Drone added to warehouse.");
     }
