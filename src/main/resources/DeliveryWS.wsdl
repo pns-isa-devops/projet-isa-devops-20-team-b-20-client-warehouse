@@ -119,9 +119,10 @@
       <xs:element minOccurs="0" name="message" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Exception" type="tns:Exception"/>
-  <xs:complexType name="Exception">
+  <xs:element name="UnknownDeliveryException" type="tns:UnknownDeliveryException"/>
+  <xs:complexType name="UnknownDeliveryException">
     <xs:sequence>
+      <xs:element minOccurs="0" name="parcelNumber" type="xs:string"/>
       <xs:element minOccurs="0" name="message" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
@@ -129,6 +130,18 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.polytech.unice.fr/si/4a/isa/dronedelivery/drone" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.polytech.unice.fr/si/4a/isa/dronedelivery/drone">
   <xsd:element name="ExternalCarrierApiException" type="tns:ExternalCarrierApiException"/>
   <xsd:complexType name="ExternalCarrierApiException">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="message" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="NoDroneAttachOnDelivery" type="tns:NoDroneAttachOnDelivery"/>
+  <xsd:complexType name="NoDroneAttachOnDelivery">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="message" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ExternalDroneApiException" type="tns:ExternalDroneApiException"/>
+  <xsd:complexType name="ExternalDroneApiException">
     <xsd:sequence>
       <xsd:element minOccurs="0" name="message" type="xsd:string"/>
     </xsd:sequence>
@@ -143,6 +156,10 @@
     <wsdl:part element="ns1:ExternalCarrierApiException" name="ExternalCarrierApiException">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="NoDroneAttachOnDelivery">
+    <wsdl:part element="ns1:NoDroneAttachOnDelivery" name="NoDroneAttachOnDelivery">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getNextDeliveryResponse">
     <wsdl:part element="tns:getNextDeliveryResponse" name="parameters">
     </wsdl:part>
@@ -155,8 +172,12 @@
     <wsdl:part element="tns:startDelivery" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="Exception">
-    <wsdl:part element="tns:Exception" name="Exception">
+  <wsdl:message name="ExternalDroneApiException">
+    <wsdl:part element="ns1:ExternalDroneApiException" name="ExternalDroneApiException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UnknownDeliveryException">
+    <wsdl:part element="tns:UnknownDeliveryException" name="UnknownDeliveryException">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="UnknownParcelException">
@@ -199,7 +220,11 @@
     </wsdl:input>
       <wsdl:output message="tns:startDeliveryResponse" name="startDeliveryResponse">
     </wsdl:output>
-      <wsdl:fault message="tns:Exception" name="Exception">
+      <wsdl:fault message="tns:UnknownDeliveryException" name="UnknownDeliveryException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:NoDroneAttachOnDelivery" name="NoDroneAttachOnDelivery">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ExternalDroneApiException" name="ExternalDroneApiException">
     </wsdl:fault>
     </wsdl:operation>
   </wsdl:portType>
@@ -240,8 +265,14 @@
       <wsdl:output name="startDeliveryResponse">
         <soap:body use="literal"/>
       </wsdl:output>
-      <wsdl:fault name="Exception">
-        <soap:fault name="Exception" use="literal"/>
+      <wsdl:fault name="UnknownDeliveryException">
+        <soap:fault name="UnknownDeliveryException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoDroneAttachOnDelivery">
+        <soap:fault name="NoDroneAttachOnDelivery" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ExternalDroneApiException">
+        <soap:fault name="ExternalDroneApiException" use="literal"/>
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
