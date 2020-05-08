@@ -28,18 +28,9 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="currentDelivery" type="tns:delivery"/>
       <xs:element minOccurs="0" name="droneId" type="xs:string"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="droneInformation" nillable="true" type="tns:droneInformation"/>
       <xs:element minOccurs="0" name="droneStatus" type="tns:droneStatus"/>
       <xs:element name="flightTime" type="xs:int"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="timeSlots" nillable="true" type="tns:timeSlot"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="droneInformation">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
-      <xs:element minOccurs="0" name="drone" type="tns:drone"/>
-      <xs:element name="id" type="xs:int"/>
-      <xs:element name="occupationRate" type="xs:double"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="timeSlot">
@@ -66,6 +57,14 @@
       <xs:element minOccurs="0" name="customerName" type="xs:string"/>
       <xs:element name="id" type="xs:int"/>
       <xs:element minOccurs="0" name="parcelId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="droneInformation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="drone" type="tns:drone"/>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="occupationRate" type="xs:double"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="getNextDelivery">
@@ -97,7 +96,7 @@
       <xs:enumeration value="DELIVERY"/>
       <xs:enumeration value="CHARGING"/>
       <xs:enumeration value="REVIEW"/>
-      <xs:enumeration value="UNAVAILABLE"/>
+      <xs:enumeration value="RESERVED_FOR_CHARGE"/>
       <xs:enumeration value="AVAILABLE"/>
     </xs:restriction>
   </xs:simpleType>
@@ -119,12 +118,6 @@
   <xs:complexType name="UnknownParcelException">
     <xs:sequence>
       <xs:element minOccurs="0" name="parcelNumber" type="xs:string"/>
-      <xs:element minOccurs="0" name="message" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="DroneNotFoundException" type="tns:DroneNotFoundException"/>
-  <xs:complexType name="DroneNotFoundException">
-    <xs:sequence>
       <xs:element minOccurs="0" name="message" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
@@ -213,10 +206,6 @@
     <wsdl:part element="tns:UnknownDeliveryException" name="UnknownDeliveryException">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="DroneNotFoundException">
-    <wsdl:part element="tns:DroneNotFoundException" name="DroneNotFoundException">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="startDeliveryResponse">
     <wsdl:part element="tns:startDeliveryResponse" name="parameters">
     </wsdl:part>
@@ -241,8 +230,6 @@
     </wsdl:input>
       <wsdl:output message="tns:getNextDeliveryResponse" name="getNextDeliveryResponse">
     </wsdl:output>
-      <wsdl:fault message="tns:DroneNotFoundException" name="DroneNotFoundException">
-    </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="startDelivery">
       <wsdl:input message="tns:startDelivery" name="startDelivery">
@@ -286,9 +273,6 @@
       <wsdl:output name="getNextDeliveryResponse">
         <soap:body use="literal"/>
       </wsdl:output>
-      <wsdl:fault name="DroneNotFoundException">
-        <soap:fault name="DroneNotFoundException" use="literal"/>
-      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="startDelivery">
       <soap:operation soapAction="" style="document"/>
