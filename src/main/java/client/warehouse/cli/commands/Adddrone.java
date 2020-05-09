@@ -20,6 +20,6 @@ public class Adddrone extends Command {
 
     @Override
     protected String help() {
-        return "addDrone : Adds a drone to the system.";
+        return "addDrone <droneid> : Adds a drone to the system.";
     }
 }

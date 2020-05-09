@@ -23,6 +23,6 @@ public class Startdelivery extends Command {
 
     @Override
     protected String help() {
-        return "Launches the drone.";
+        return "startdelivery <deliveryid> : Launches the drone.";
     }
 }
