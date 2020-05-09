@@ -17,8 +17,10 @@ public class Getnextdelivery extends Command {
         try {
             Delivery delivery = ((ShellWarehouse) this.shell).getDeliveryServiceAPI().getDeliveryService()
                     .getNextDelivery(args.get(0));
-            System.out.println("Next delivery to prepare:" + "\nNumber: " + delivery.getDeliveryId() + "\nDrone: "
-                    + delivery.getDrone().getDroneId() + "\nParcel number: " + delivery.getParcel().getParcelId());
+            System.out.println("Next delivery to prepare:" + 
+                    "\nNumber: " + delivery.getDeliveryId() + 
+                    "\nDrone: " + delivery.getDrone().getDroneId() + 
+                    "\nParcel number: " + delivery.getParcel().getParcelId());
         } catch (Exception e) {
             System.err.println("Delivery schedule is empty!");
         }
