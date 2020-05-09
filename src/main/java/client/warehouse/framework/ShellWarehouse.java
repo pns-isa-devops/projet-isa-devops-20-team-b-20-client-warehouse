@@ -9,10 +9,10 @@ public class ShellWarehouse extends Shell {
     private DeliveryAPI deliveryServiceAPI;
     private DroneMaintenanceAPI droneMaintenanceApi;
 
-    public ShellWarehouse(DeliveryAPI deliveryServiceAPI, DroneMaintenanceAPI droneMaintenancApi) {
+    public ShellWarehouse(DeliveryAPI deliveryServiceAPI, DroneMaintenanceAPI droneMaintenanceAPI) {
         super("client.warehouse.cli.commands");
         this.deliveryServiceAPI = deliveryServiceAPI;
-        this.droneMaintenanceApi = droneMaintenancApi;
+        this.droneMaintenanceApi = droneMaintenanceAPI;
     }
 
     public DeliveryAPI getDeliveryServiceAPI() {

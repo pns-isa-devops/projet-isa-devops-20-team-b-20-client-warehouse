@@ -11,6 +11,7 @@ import client.warehouse.cli.commands.Setincharge;
 import client.warehouse.cli.commands.Setinreview;
 import client.warehouse.cli.commands.Startdelivery;
 import client.warehouse.framework.ShellWarehouse;
+import client.warehouse.cli.commands.Getdrones;
 
 public class Main {
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
@@ -21,7 +22,7 @@ public class Main {
         System.out.println("  - Port number:   " + port);
         ShellWarehouse s = new ShellWarehouse(new DeliveryAPI(host, port), new DroneMaintenanceAPI(host, port));
         s.register(Bye.class, Help.class, Getnextdelivery.class, Startdelivery.class, Setincharge.class, Adddrone.class,
-                Setavailable.class, Setinreview.class, Checkfornewparcels.class);
+                Setavailable.class, Setinreview.class, Checkfornewparcels.class, Getdrones.class);
         s.run();
     }
 }
