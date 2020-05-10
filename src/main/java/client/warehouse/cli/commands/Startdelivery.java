@@ -10,7 +10,7 @@ public class Startdelivery extends Command {
     @Override
     public void execute(List<String> args) {
         if(args.isEmpty()){
-            System.err.println("Missing drone id\n" + this.help());
+            System.err.println("Missing delivery id\n" + this.help());
             return;
         }
         try {
