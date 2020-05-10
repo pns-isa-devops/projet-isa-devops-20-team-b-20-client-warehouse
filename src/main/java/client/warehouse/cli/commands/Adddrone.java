@@ -10,6 +10,11 @@ public class Adddrone extends Command {
     @Override
     public void execute(List<String> args) {
 
+        if(args.isEmpty()){
+            System.err.println("Missing drone id\n" + this.help());
+            return;
+        }
+
         try {
             ((ShellWarehouse) this.shell).getDroneMaintenanceApi().getDroneMaintenanceService().addDrone(args.get(0));
             System.out.println("Drone added to warehouse.");

@@ -28,6 +28,6 @@ public class Getnextdelivery extends Command {
 
     @Override
     protected String help() {
-        return "See next delivery.";
+        return "getnextdelivery <current hour> : See next delivery after current hour.";
     }
 }

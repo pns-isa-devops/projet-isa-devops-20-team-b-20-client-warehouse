@@ -8,8 +8,8 @@ import client.warehouse.framework.ShellWarehouse;
 public class Startdelivery extends Command {
     @Override
     public void execute(List<String> args) {
-        if (args.isEmpty()) {
-            System.err.println("No drone selected.");
+        if(args.isEmpty()){
+            System.err.println("Missing drone id\n" + this.help());
             return;
         }
         try {

@@ -11,12 +11,12 @@ public class Getdrones extends Command {
     @Override
     public void execute(List<String> args) {
         List<Drone> drones = ((ShellWarehouse) this.shell).getDroneMaintenanceApi().getDroneMaintenanceService().getDrones();
-        if(drones.isEmpty()){
+        if (drones.isEmpty()) {
             System.out.println("There is no drone is the warehouse.");
             return;
         }
         System.out.println("\nDrone list :");
-        for(Drone drone : drones){
+        for (Drone drone : drones) {
             System.out.println(drone.getDroneId());
         }
         System.out.println();
@@ -24,7 +24,7 @@ public class Getdrones extends Command {
 
     @Override
     protected String help() {
-        return "Gets the information of every drone in the system.";
+        return "getdrones : Gets the information of every drone in the system.";
     }
 
 }

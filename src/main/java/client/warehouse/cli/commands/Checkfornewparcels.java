@@ -29,7 +29,7 @@ public class Checkfornewparcels extends Command {
 
     @Override
     protected String help() {
-        return "Get new parcels from carrier api";
+        return "checkfornewparcels : Get new parcels from carrier api";
     }
 
 }

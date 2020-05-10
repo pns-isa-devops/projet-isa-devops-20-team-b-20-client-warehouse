@@ -9,6 +9,12 @@ import stubs.maintenance.DroneNotFoundException_Exception;
 public class Setavailable extends Command {
     @Override
     public void execute(List<String> args) {
+
+        if(args.isEmpty()){
+            System.err.println("Missing drone id\n" + this.help());
+            return;
+        }
+
         try {
             ((ShellWarehouse) this.shell).getDroneMaintenanceApi().getDroneMaintenanceService()
                     .setAvailableDrone(args.get(0));
@@ -21,6 +27,6 @@ public class Setavailable extends Command {
 
     @Override
     protected String help() {
-        return "availabledrone <drone_id> : Make the drone available";
+        return "setavailable <drone_id> : Makes the drone available";
     }
 }

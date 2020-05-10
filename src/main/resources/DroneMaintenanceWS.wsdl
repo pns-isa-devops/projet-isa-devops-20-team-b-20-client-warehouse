@@ -166,6 +166,12 @@
 
 </xs:schema>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.polytech.unice.fr/si/4a/isa/dronedelivery/drone" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.polytech.unice.fr/si/4a/isa/dronedelivery/drone">
+  <xsd:element name="DroneCannotChangeStateException" type="tns:DroneCannotChangeStateException"/>
+  <xsd:complexType name="DroneCannotChangeStateException">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="message" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:element name="DroneNotFoundException" type="tns:DroneNotFoundException"/>
   <xsd:complexType name="DroneNotFoundException">
     <xsd:sequence>
@@ -180,28 +186,12 @@
   </xsd:complexType>
 </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="reviewDrone">
-    <wsdl:part element="tns:reviewDrone" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="chargeDroneResponse">
-    <wsdl:part element="tns:chargeDroneResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="DroneNotFoundException">
-    <wsdl:part element="ns1:DroneNotFoundException" name="DroneNotFoundException">
+  <wsdl:message name="DroneCannotChangeStateException">
+    <wsdl:part element="ns1:DroneCannotChangeStateException" name="DroneCannotChangeStateException">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="setAvailableDroneResponse">
     <wsdl:part element="tns:setAvailableDroneResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="setAvailableDrone">
-    <wsdl:part element="tns:setAvailableDrone" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="getDronesResponse">
-    <wsdl:part element="tns:getDronesResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getDrones">
@@ -228,12 +218,34 @@
     <wsdl:part element="ns1:InvalidDroneIDException" name="InvalidDroneIDException">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="reviewDrone">
+    <wsdl:part element="tns:reviewDrone" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="chargeDroneResponse">
+    <wsdl:part element="tns:chargeDroneResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DroneNotFoundException">
+    <wsdl:part element="ns1:DroneNotFoundException" name="DroneNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setAvailableDrone">
+    <wsdl:part element="tns:setAvailableDrone" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDronesResponse">
+    <wsdl:part element="tns:getDronesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="DroneMaintenanceService">
     <wsdl:operation name="reviewDrone">
       <wsdl:input message="tns:reviewDrone" name="reviewDrone">
     </wsdl:input>
       <wsdl:output message="tns:reviewDroneResponse" name="reviewDroneResponse">
     </wsdl:output>
+      <wsdl:fault message="tns:DroneCannotChangeStateException" name="DroneCannotChangeStateException">
+    </wsdl:fault>
       <wsdl:fault message="tns:DroneNotFoundException" name="DroneNotFoundException">
     </wsdl:fault>
     </wsdl:operation>
@@ -258,6 +270,8 @@
     </wsdl:input>
       <wsdl:output message="tns:chargeDroneResponse" name="chargeDroneResponse">
     </wsdl:output>
+      <wsdl:fault message="tns:DroneCannotChangeStateException" name="DroneCannotChangeStateException">
+    </wsdl:fault>
       <wsdl:fault message="tns:DroneNotFoundException" name="DroneNotFoundException">
     </wsdl:fault>
     </wsdl:operation>
@@ -278,6 +292,9 @@
       <wsdl:output name="reviewDroneResponse">
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="DroneCannotChangeStateException">
+        <soap:fault name="DroneCannotChangeStateException" use="literal"/>
+      </wsdl:fault>
       <wsdl:fault name="DroneNotFoundException">
         <soap:fault name="DroneNotFoundException" use="literal"/>
       </wsdl:fault>
@@ -314,6 +331,9 @@
       <wsdl:output name="chargeDroneResponse">
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="DroneCannotChangeStateException">
+        <soap:fault name="DroneCannotChangeStateException" use="literal"/>
+      </wsdl:fault>
       <wsdl:fault name="DroneNotFoundException">
         <soap:fault name="DroneNotFoundException" use="literal"/>
       </wsdl:fault>
